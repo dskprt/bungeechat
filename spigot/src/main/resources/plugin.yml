@@ -1,0 +1,8 @@
+name: Bungeechat
+version: ${project.version}
+main: com.github.dskprt.bungeechat.Bungeechat
+api-version: 1.16
+prefix: BUNGEECHAT
+authors: [dskprt]
+description: funny plugin that allows communication between bungeecord servers (spigot side)
+website: https://github.com/dskprt/bungeechat
