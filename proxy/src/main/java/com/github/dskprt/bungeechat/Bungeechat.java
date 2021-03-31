@@ -17,7 +17,7 @@ public final class Bungeechat extends Plugin implements Listener {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        this.getProxy().registerChannel("dumb:bungeechat");
+        this.getProxy().registerChannel("dskprt:bungeechat");
         this.getProxy().getPluginManager().registerListener(this, this);
     }
 
@@ -32,12 +32,12 @@ public final class Bungeechat extends Plugin implements Listener {
         out.writeUTF(username);
         out.writeUTF(message);
 
-        s.sendData("dumb:bungeechat", out.toByteArray());
+        s.sendData("dskprt:bungeechat", out.toByteArray());
     }
 
     @EventHandler
     public void onPluginMessage(PluginMessageEvent e) {
-        if (!e.getTag().equals("dumb:bungeechat")) {
+        if (!e.getTag().equals("dskprt:bungeechat")) {
             return;
         }
 
@@ -49,8 +49,6 @@ public final class Bungeechat extends Plugin implements Listener {
         String server = in.readUTF();
         String username = in.readUTF();
         String message = in.readUTF();
-
-        this.getLogger().info("received message: " + server + "; " + username + "; " + message);
 
         for(Map.Entry<String, ServerInfo> s : this.getProxy().getServers().entrySet()) {
             sendMessage(server, username, message, s.getValue());

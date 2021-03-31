@@ -15,8 +15,8 @@ public final class Bungeechat extends JavaPlugin implements PluginMessageListene
     public void onEnable() {
         INSTANCE = this;
 
-        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "dumb:bungeechat");
-        this.getServer().getMessenger().registerIncomingPluginChannel(this, "dumb:bungeechat", this);
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "dskprt:bungeechat");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "dskprt:bungeechat", this);
         this.getServer().getPluginManager().registerEvents(new ChatListener(), this);
     }
 
@@ -27,7 +27,7 @@ public final class Bungeechat extends JavaPlugin implements PluginMessageListene
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        if(!channel.equals("dumb:bungeechat")) {
+        if(!channel.equals("dskprt:bungeechat")) {
             return;
         }
 
@@ -37,8 +37,6 @@ public final class Bungeechat extends JavaPlugin implements PluginMessageListene
         String msg = in.readUTF();
 
         if(server.equals(this.getServer().getName())) return;
-
-        this.getLogger().info("received message: " + server + "; " + username + "; " + msg);
         this.getServer().broadcastMessage(String.format("[%s] <%s> %s", server, username, msg));
     }
 }

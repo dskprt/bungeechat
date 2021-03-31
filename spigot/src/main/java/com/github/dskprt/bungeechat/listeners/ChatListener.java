@@ -16,7 +16,6 @@ public class ChatListener implements Listener {
         out.writeUTF(e.getPlayer().getDisplayName());
         out.writeUTF(e.getMessage());
 
-        Bungeechat.INSTANCE.getLogger().info("sending message: " + e.getPlayer().getServer().getName() + "; " + e.getPlayer().getDisplayName() + "; " + e.getMessage());
         e.getPlayer().getServer().sendPluginMessage(Bungeechat.INSTANCE, "dumb:bungeechat", out.toByteArray());
     }
 }
